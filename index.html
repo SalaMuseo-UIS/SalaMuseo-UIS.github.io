@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Veterinaria Patitas Sanas - Cuidamos de tu mascota</title>
+    <title>Museo de Historia Natural UIS - Programa tu Visita</title>
     <style>
         /* --- ESTILOS GENERALES Y FUENTES --- */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:wght@400;600&display=swap');
 
         :root {
-            --primary-color: #005A9C; /* Azul principal del flyer */
-            --secondary-color: #FDB813; /* Acento amarillo/naranja */
-            --dark-color: #333;
-            --light-color: #f4f4f4;
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #2a2a2a;
+            --text-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-color: #d4ac6e; /* Un tono dorado/ocre inspirado en los logos */
             --white-color: #ffffff;
         }
 
@@ -23,43 +24,45 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--white-color);
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: var(--primary-bg);
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
             padding: 0 2rem;
         }
 
-        h1, h2 {
-            font-weight: 600;
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
         
         h2 {
             text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
         }
 
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         /* --- HEADER Y NAVEGACIÓN --- */
         .navbar {
-            background: var(--white-color);
+            background: rgba(0, 0, 0, 0.6);
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .navbar .container {
@@ -71,7 +74,7 @@
         .navbar .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--white-color);
             text-decoration: none;
         }
 
@@ -84,19 +87,20 @@
             padding: 0.75rem;
             margin: 0 0.5rem;
             text-decoration: none;
-            color: var(--dark-color);
+            color: var(--text-light);
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .navbar ul li a:hover {
-            color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         /* --- SECCIÓN HERO (INICIO) --- */
         .hero {
-            background: linear-gradient(rgba(0, 90, 156, 0.7), rgba(0, 90, 156, 0.7)), url(https://i.imgur.com/rXVm2aP.jpeg) no-repeat center center/cover;
-            height: 90vh;
+            /* CAMBIAR AQUÍ: Coloca la URL de una imagen de fondo de alta calidad */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://i.imgur.com/uN62K2f.jpeg) no-repeat center center/cover;
+            height: 100vh;
             color: var(--white-color);
             display: flex;
             flex-direction: column;
@@ -107,277 +111,240 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 0.5rem;
         }
 
         .hero p {
             font-size: 1.5rem;
-            font-weight: 300;
+            font-family: 'Lora', serif;
             margin-bottom: 2rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--secondary-color);
-            color: var(--white-color);
+            padding: 0.9rem 2.2rem;
+            background: var(--accent-color);
+            color: var(--primary-bg);
             border: none;
             border-radius: 5px;
             text-decoration: none;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .btn:hover {
             transform: scale(1.05);
-            background: #fca600;
+            background: #e7bf86;
         }
 
-        /* --- SECCIÓN SOBRE NOSOTROS --- */
-        #nosotros .container {
+        /* --- SECCIÓN HORARIOS --- */
+        .horarios {
+            background-color: var(--secondary-bg);
             text-align: center;
-            max-width: 800px;
         }
-
-        /* --- SECCIÓN DE SERVICIOS --- */
-        #servicios {
-            background-color: var(--light-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .service-card {
-            background: var(--white-color);
+        
+        .horarios-box {
+            background: var(--primary-bg);
             padding: 2rem;
-            text-align: center;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-
-        .service-card .icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        /* --- SECCIÓN DE CONTACTO --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .contact-info p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info .icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            color: var(--primary-color);
-        }
-
-        .social-icons a {
-            color: var(--primary-color);
+        .horarios-box h3 {
             font-size: 2rem;
-            margin-right: 1rem;
-            transition: color 0.3s ease;
+            color: var(--accent-color);
+        }
+
+        .horarios-box p {
+            font-size: 1.5rem;
+        }
+
+        /* --- SECCIÓN DE PRECIOS --- */
+        .precios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .precio-card {
+            background: var(--secondary-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .precio-card h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        .social-icons a:hover {
-            color: var(--secondary-color);
+        .precio-card ul {
+            list-style: none;
         }
 
-        .map-container {
-            width: 100%;
-            height: 350px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .precio-card li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #444;
+            font-size: 1.1rem;
+        }
+        
+        .precio-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .precio-card li span {
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
+        .free-entry {
+            color: #a5d6a7; /* Un verde suave para "Entrada libre" */
+        }
+        
+        .sub-item {
+            padding-left: 1.5rem;
+            font-size: 1rem !important;
+        }
+
+        /* --- SECCIÓN RESERVA --- */
+        #reserva {
+            background-color: var(--secondary-bg);
+            text-align: center;
+        }
+
+        #reserva p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .contact-icons a {
+            color: var(--text-light);
+            font-size: 3rem;
+            margin: 0 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
         }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--dark-color);
-            color: var(--white-color);
+            background: var(--primary-bg);
+            color: #aaa;
             text-align: center;
             padding: 2rem 0;
+            border-top: 1px solid #333;
         }
         
         /* --- RESPONSIVE DESIGN --- */
         @media(max-width: 768px) {
-            .navbar .container {
-                flex-direction: column;
-            }
-            .navbar ul {
-                margin-top: 1rem;
-                flex-direction: column;
-                align-items: center;
-            }
-            .navbar ul li a {
-                padding: 0.5rem 0;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .contact-info p {
-                justify-content: center;
-            }
-            .map-container {
-                grid-row-start: 1; /* Pone el mapa arriba en móvil */
-            }
+            .navbar .container { flex-direction: column; }
+            .navbar ul { margin-top: 1rem; }
+            .hero { height: 90vh; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            h2 { font-size: 2rem; }
         }
     </style>
-
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
     <header class="navbar">
         <div class="container">
-            <a href="#" class="logo">🐾 Patitas Sanas</a>
+            <a href="#inicio" class="logo">MUSEO DE HISTORIA NATURAL UIS</a>
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#precios">Tarifas</a></li>
+                    <li><a href="#reserva">Reserva</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <h1>Cuidamos de tu mascota como si fuera nuestra</h1>
-        <p>Atención veterinaria de calidad con el cariño que tu mejor amigo merece.</p>
-        <a href="https://wa.me/573101234567" target="_blank" class="btn">Agenda una Cita por WhatsApp</a>
-    </section>
-
-    <section id="nosotros">
-        <div class="container">
-            <h2>Pasión por el Bienestar Animal</h2>
-            <p>
-                Somos un equipo de profesionales dedicados y apasionados por la salud de las mascotas. Nuestra misión es ofrecer un servicio integral y de alta calidad, combinando la mejor tecnología con un trato cercano y amable para que tanto tú como tu compañero se sientan en las mejores manos.
-            </p>
-        </div>
-    </section>
-    
-    <section id="servicios">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon">🩺</div>
-                    <h3>Consulta General</h3>
-                    <p>Chequeos completos para prevenir y diagnosticar cualquier condición a tiempo.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">💉</div>
-                    <h3>Vacunación y Desparasitación</h3>
-                    <p>Planes de inmunización y protección contra parásitos adaptados a cada mascota.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">🦷</div>
-                    <h3>Profilaxis Dental</h3>
-                    <p>Cuidado oral avanzado para prevenir enfermedades y mantener una sonrisa sana.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">✂️</div>
-                    <h3>Cirugías</h3>
-                    <p>Intervenciones quirúrgicas seguras con equipos modernos y monitoreo constante.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">🏥</div>
-                    <h3>Hospitalización</h3>
-                    <p>Área de recuperación cómoda y vigilada para casos que requieren cuidados intensivos.</p>
-                </div>
-                 <div class="service-card">
-                    <div class="icon">🧼</div>
-                    <h3>Peluquería Canina y Felina</h3>
-                    <p>Servicios de grooming para que tu mascota luzca y se sienta genial.</p>
-                </div>
-                 <div class="service-card">
-                    <div class="icon">🦴</div>
-                    <h3>Pet Shop</h3>
-                    <p>Encuentra los mejores alimentos, juguetes y accesorios para tu compañero.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon">🛵</div>
-                    <h3>Servicio a Domicilio</h3>
-                    <p>Llevamos nuestros cuidados y productos directamente a la puerta de tu casa.</p>
+    <main>
+        <section id="inicio" class="hero">
+            <h1>PROGRAMA TU VISITA</h1>
+            <p>Un viaje fascinante por la biodiversidad y la historia natural.</p>
+            <a href="#precios" class="btn">Ver Tarifas</a>
+        </section>
+        
+        <section id="horarios" class="horarios">
+            <div class="container">
+                 <div class="horarios-box">
+                    <h3>Podemos Atenderte</h3>
+                    <p>De 8:00 AM a 5:00 PM</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contacto">
-        <div class="container">
-            <h2>Contáctanos</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Estamos para ayudarte</h3>
-                    <p><span class="icon">📍</span> <strong>Dirección:</strong><br>
-                        Calle Falsa 123, Cali, Colombia
-                    </p>
-                    <p><span class="icon">📞</span> <strong>Teléfono / WhatsApp:</strong><br>
-                        310 123 4567
-                    </p>
-                    <div class="social-icons">
-                         <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/573101234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <section id="precios">
+            <div class="container">
+                <h2>Tarifas de Ingreso</h2>
+                <div class="precios-grid">
+                    <div class="precio-card">
+                        <h3>Visitantes Individuales</h3>
+                        <ul>
+                            <li>Comunidad General <span>$15.000</span></li>
+                            <li><strong>Comunidad UIS</strong></li>
+                            <li class="sub-item">Lunes, Miércoles, Viernes <span>$10.000</span></li>
+                            <li class="sub-item">Sábado y Domingo <span>$10.000</span></li>
+                            <li class="sub-item">Martes y Jueves <span>$7.500</span></li>
+                        </ul>
+                    </div>
+                    <div class="precio-card">
+                        <h3>Expediciones Familiares</h3>
+                        <ul>
+                            <li>Grupos (hasta 5 personas) <span>$50.000</span></li>
+                            <li>Mayores de 70 años <span class="free-entry">¡Entrada libre!</span></li>
+                            <li>Menores de 7 años <span class="free-entry">¡Entrada libre!</span></li>
+                        </ul>
+                    </div>
+                    <div class="precio-card">
+                        <h3>Delegaciones Escolares</h3>
+                        <ul>
+                            <li>Colegios Públicos <span>$5.000</span></li>
+                            <li>Colegios Privados <span>$10.000</span></li>
+                            <li>Guías Escolares (Profesores) <span class="free-entry">¡Entrada libre!</span></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127431.2584285871!2d-76.59918715136718!3d3.424694999999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0b83af073%3A0x1338081682782b75!2sCali%2C%20Valle%20del%20Cauca!5e0!3m2!1ses!2sco!4v1662325373305!5m2!1ses!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section id="reserva">
+            <div class="container">
+                <h2>No Olvides Hacer tu Reserva</h2>
+                <p>Contacta con nosotros para programar tu visita de grupo, resolver dudas y asegurar tu cupo. ¡Te esperamos!</p>
+                <div class="contact-icons">
+                    <a href="https://wa.me/573017000771" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com/mhn_uis" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    </main>
+    
     <footer>
         <div class="container">
-            <p>&copy; 2025 Clínica Veterinaria Patitas Sanas. Todos los derechos reservados.</p>
+            <p>© 2025 Museo de Historia Natural UIS - Escuela de Biología. Todos los derechos reservados.</p>
         </div>
     </footer>
 
